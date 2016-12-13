@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <hello></hello>
+    <img src="./assets/skipperLogo.png">
+    <trip></trip>
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello'
+import Trip from './components/Trip.vue'
 
 export default {
   name: 'app',
   components: {
-    Hello
+    Trip
   }
 }
 </script>
