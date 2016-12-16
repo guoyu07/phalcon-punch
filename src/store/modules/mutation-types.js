@@ -1,0 +1,2 @@
+export const DAILY_LEADS = 'DAILY_LEADS'
+export const MONTHLY_LEADS = 'MONTHLY_LEADS'
