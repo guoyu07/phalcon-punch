@@ -46,6 +46,7 @@ const mutations = {
   },
 
   [types.DAILY_LEADS] (state, inquiries) {
+    // assign the inquiries to state.dailyLeads
     state.dailyLeads = inquiries
   }
 }
