@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
+    "pusher-js": "^4.0.0",
     "vue": "^2.1.0",
     "vuex": "^2.0.0"
   },

@@ -21,12 +21,13 @@
 
 <script type="text/babel">
   import { mapState, mapMutations, mapGetters } from 'vuex'
+  import Pusher from 'pusher-js'
 
   export default {
     name: 'trip',
     created () {
-      this.$store.dispatch('getDailyLeads')
-      this.$store.dispatch('getMonthlyLeads')
+      this.getLeadsCount()
+      this.subscribeToChannel()
     },
     computed: {
       ...mapGetters({
@@ -35,6 +36,20 @@
         dailyLeadsByAdvisers: 'dailyLeadsByAdvisers',
         monthlyLeadsByAdvisers: 'monthlyLeadsByAdvisers'
       })
+    },
+    methods: {
+      subscribeToChannel () {
+        let pusher = new Pusher('6d23711ca49c35d5ce88')
+        let channel = pusher.subscribe('phalcon')
+
+        channel.bind('inquiry-created', () => {
+          this.getLeadsCount()
+        })
+      },
+      getLeadsCount () {
+        this.$store.dispatch('getDailyLeads')
+        this.$store.dispatch('getMonthlyLeads')
+      }
     }
   }
 </script>
