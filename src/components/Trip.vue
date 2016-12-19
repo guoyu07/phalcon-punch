@@ -1,6 +1,6 @@
 <template>
   <div id="trip">
-    <h1>MONTHLY SIGNED DOCS: {{ dailyLeadsCount }}</h1>
+    <h1>MONTHLY SIGNED DOCS: {{ monthlySignedDocLeadsCount }}</h1>
      <h1>MONTHLY LEADS: {{ monthlyLeadsCount }}</h1>
 
     <h2>Monthly Score</h2>
@@ -33,6 +33,7 @@
       ...mapGetters({
         monthlyLeadsCount: 'monthlyLeadsCount',
         dailyLeadsCount: 'dailyLeadsCount',
+        monthlySignedDocLeadsCount: 'monthlySignedDocLeadsCount',
         dailyLeadsByAdvisers: 'dailyLeadsByAdvisers',
         monthlyLeadsByAdvisers: 'monthlyLeadsByAdvisers'
       })
@@ -45,10 +46,17 @@
         channel.bind('inquiry-created', () => {
           this.getLeadsCount()
         })
+        channel.bind('inquiry-signed-doc', () => {
+          this.getSignedDocsCount()
+        })
       },
       getLeadsCount () {
         this.$store.dispatch('getDailyLeads')
         this.$store.dispatch('getMonthlyLeads')
+        this.$store.dispatch('getMonthlySignedDocLeads')
+      },
+      getSignedDocsCount () {
+        this.$store.dispatch('getMonthlySignedDocLeads')
       }
     }
   }

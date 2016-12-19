@@ -4,7 +4,8 @@ import api from '../../api/api'
 // initial state
 const state = {
   dailyLeads: [],
-  monthlyLeads: []
+  monthlyLeads: [],
+  monthlySignedDocLeads: []
 }
 
 // getters
@@ -14,6 +15,9 @@ const getters = {
   },
   dailyLeadsCount: state => {
     return state.dailyLeads.total_leads
+  },
+  monthlySignedDocLeadsCount: state => {
+    return state.monthlySignedDocLeads.total_leads
   },
   dailyLeadsByAdvisers: state => state.dailyLeads.booking_adviser,
   monthlyLeadsByAdvisers: state => state.monthlyLeads.booking_adviser
@@ -29,9 +33,17 @@ const actions = {
     })
   },
 
-  getMonthlyLeads ({commit}) {
+  getMonthlyLeads ({ commit }) {
     api.getDailyLeads().then(response => {
       commit(types.DAILY_LEADS, response)
+    }).catch(error => {
+      console.log(error)
+    })
+  },
+
+  getMonthlySignedDocLeads ({ commit }) {
+    api.getMonthlySignedDocLeads().then(response => {
+      commit(types.MONTHLY_SIGNED_DOC_LEADS, response)
     }).catch(error => {
       console.log(error)
     })
@@ -48,6 +60,10 @@ const mutations = {
   [types.DAILY_LEADS] (state, inquiries) {
     // assign the inquiries to state.dailyLeads
     state.dailyLeads = inquiries
+  },
+
+  [types.MONTHLY_SIGNED_DOC_LEADS] (state, payload) {
+    state.monthlySignedDocLeads = payload
   }
 }
 
