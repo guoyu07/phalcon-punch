@@ -1,21 +1,73 @@
 <template>
   <div id="trip">
-    <h1>MONTHLY SIGNED DOCS: {{ monthlySignedDocLeadsCount }}</h1>
-     <h1>MONTHLY LEADS: {{ monthlyLeadsCount }}</h1>
+    <!-- start main content -->
+    <main class="pontos">
+      <section class="row--full row card__slide--dark card__slide card">
+        <section class="pontos__skipperHat grid">
+          <section class="grid__col-sm-12 grid--justify-center grid__cell--padding-lg">
+           <span class="icon__svgSkipperHat--3 icon__svgSkipperHat icon">
+            </span>
+          </section>
+        </section>
+        <section class="grid">
+          <div class="leftBlock grid__col-sm-7">
+                <span class="highlightScore">
+                    1,598
+                </span>
+            <h3 class="pontos__scoreHeader titleFont">
+              MONTHLY SIGNED DOCS
+            </h3>
+               <span class="highlightScore">
+                   3,498
+               </span>
+            <p class="pontos__scoreHeader titleFont">
+              MONTHLY LEADS
+            </p>
+            <ul class="dailyScore ">
+              <li class="titleFont">
+                DAILY SCORE
+              </li>
+              <li>
+                       <span>
+                           Alina Admon
+                       </span>
+                       <span class="titleFont ">
+                           7
+                       </span>
+              </li>
+            </ul>
+          </div>
+          <div class="grid__col-sm-5 ">
+            <ul class="baScore">
+              <li >
+                <p class=" titleFont ">
+                  MONTHLY SCORE
+                </p>
+              </li>
+              <li class="baScore__borderImage">
+                <div class=" baScore__image image-cropper">
+                  <img src="http://skipper.jetaport.com//images/about/team_photos/Tex.jpg" alt="" />
+                </div>
+                <div class="baScore__score">
+                  250
+                </div>
+              </li>
+              <li>
+                <div class="baScore__image image-cropper">
+                  <img class=" pontosImageCircle" src="http://skipper.jetaport.com//images/about/team_photos/Tex.jpg" alt="Marcos">
+                </div>
+                <div class="baScore__score">
+                  250
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
 
-    <h2>Monthly Score</h2>
-    <ul>
-      <li v-for="adviser in monthlyLeadsByAdvisers">
-        <h3>{{ adviser.first_name }} : {{ adviser.leads_count}} </h3>
-      </li>
-    </ul>
+      </section>
 
-    <h2>Daily Score</h2>
-    <ul>
-      <li v-for="adviser in dailyLeadsByAdvisers">
-        <h3>{{ adviser.first_name }} : {{ adviser.leads_count}} </h3>
-      </li>
-    </ul>
+    </main>
+    <!-- end main content -->
   </div>
 </template>
 
@@ -61,6 +113,3 @@
     }
   }
 </script>
-
-<style>
-</style>

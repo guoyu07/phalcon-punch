@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img class="center" src="./assets/skipperLogo.png">
+
     <trip></trip>
   </div>
 </template>
@@ -15,18 +15,7 @@ export default {
   }
 }
 </script>
-
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto
-}
+  @import "assets/global.css";
+  @import "assets/style.css";
 </style>

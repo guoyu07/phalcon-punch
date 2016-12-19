@@ -1,0 +1,166 @@
+/* start measurements */
+/* REFLEX variables, please note:; if these values change, they also must be changed in /resources/assets/reflex-master/less/reflex/variables.less and the LESS file must be recompiled */
+/* end measurements */
+/* start breakpoints, please note: if these breakpoints change, they also must be changed in /resources/assets/reflex-master/less/reflex/variables.less and the LESS file must be recompiled */
+/* without the unit suffix, useful for calculations */
+/* min-width breakpoints */
+/* end breakpoints */
+/* start paths */
+/* end paths */
+/* start colors */
+/* generic Skipper colors */
+/* global status colors */
+/* client status colors */
+/* hotel status colors */
+/* end colors */
+
+.titleFont{
+  font-size: 24px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: 2.6px;
+  color: #1e345d;
+}
+.pontos{
+
+}
+.pontos__skipperHat{
+  padding: 70px 0 50px 0;
+}
+.pontos__scoreFont{
+  font-size: 144px;
+  letter-spacing: 15.4px;
+  color: #1e345d;
+}
+.pontos__leftBlock{
+  margin: 100px 0 50px 40px;
+}
+.pontos__scoreHeader{
+  margin: 30px 0 90px 0;
+}
+.leftBlock{
+  margin: 50px 0 30px 20px;
+  padding: 20px;
+}
+.leftBlock .highlightScore{
+  font-size: 144px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: 15.4px;
+  color: #1e345d;
+  margin: 5px 0 67px 0;
+}
+.leftBlock .dailyScore li{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 30px 15px 10px 5px;
+  border-bottom: 1px solid #1e345d;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: 2.6px;
+  color: #1e345d;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.leftBlock .dailyScore li span{
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+.leftBlock .dailyScore li:nth-child(1){
+  border-bottom: 0 solid #1e345d;
+}
+
+.baScore li{
+  border-radius: 2px;
+  background-color: #ffffff;
+  box-shadow: 0 0 2px 0 #1e345d;
+  padding: 10px;
+  margin: 5px 88px 20px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  font-size: 48px;
+  letter-spacing: 5.1px;
+  color: #1e345d;
+}
+
+.baScore li div{
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.baScore li:nth-child(1){
+  border-radius: 0;
+  box-shadow: 0 0 0px 0 #1e345d;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.baScore li:nth-child(2){
+  background-color: #1e345d;
+  font-size: 48px;
+  letter-spacing: 5.1px;
+  color: #ffffff;
+  border: 10px solid transparent;
+  border-image-source: url(img/border.png);
+  border-image-repeat: round;
+  border-image-slice: 64;
+  border-image-width: 35px;
+  border-image-outset: 2.2;
+  margin: 5px 88px 55px 10px;
+}
+
+.baScore__image{
+  margin-left: 11px;
+}
+
+.baScore__score{
+  margin: 35px 65px 0 13px;
+}
+
+.baScore__borderImage{
+
+}
+
+.image-cropper {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.image-cropper img {
+  display: inline;
+  margin: 0 auto;
+  height: 100%;
+  width: auto;
+}
+
+
+.icon__arrow--top{
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #429b00;
+}
+.icon__arrow--down {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+
+  border-top: 10px solid #f00;
+}
