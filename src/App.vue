@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-
     <trip></trip>
   </div>
 </template>

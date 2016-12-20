@@ -12,27 +12,27 @@
         <section class="grid">
           <div class="leftBlock grid__col-sm-7">
                 <span class="highlightScore">
-                    1,598
+                    {{ monthlySignedDocLeadsCount }}
                 </span>
             <h3 class="pontos__scoreHeader titleFont">
               MONTHLY SIGNED DOCS
             </h3>
                <span class="highlightScore">
-                   3,498
+                   {{ monthlyLeadsCount }}
                </span>
             <p class="pontos__scoreHeader titleFont">
               MONTHLY LEADS
             </p>
             <ul class="dailyScore ">
               <li class="titleFont">
-                DAILY SCORE
+                <strong>DAILY SCORE</strong>
               </li>
-              <li>
-                       <span>
-                           Alina Admon
+              <li v-for="item in dailySignedLeadsByAdvisers">
+                       <span >
+                           <strong> {{ fullName(item) }} </strong>
                        </span>
-                       <span class="titleFont ">
-                           7
+                       <span class="titleFont">
+                           {{ item.leads_count }}
                        </span>
               </li>
             </ul>
@@ -44,20 +44,20 @@
                   MONTHLY SCORE
                 </p>
               </li>
-              <li class="baScore__borderImage">
+              <li class="baScore__borderImage" v-if="winnerBA">
                 <div class=" baScore__image image-cropper">
-                  <img src="http://skipper.jetaport.com//images/about/team_photos/Tex.jpg" alt="" />
+                  <img v-if="winnerBA" :src="winnerBA.image" alt="" />
                 </div>
                 <div class="baScore__score">
-                  250
+                  {{ winnerBA.leads_count }}
                 </div>
               </li>
-              <li>
+              <li v-for="(item, index) in monthlySignedLeadsByAdvisers" v-if="item">
                 <div class="baScore__image image-cropper">
-                  <img class=" pontosImageCircle" src="http://skipper.jetaport.com//images/about/team_photos/Tex.jpg" alt="Marcos">
+                  <img  class=" pontosImageCircle" :src="item.image" alt="Marcos">
                 </div>
                 <div class="baScore__score">
-                  250
+                  {{ item.leads_count }}
                 </div>
               </li>
             </ul>
@@ -78,17 +78,21 @@
   export default {
     name: 'trip',
     created () {
-      this.getLeadsCount()
+      this.getLeads()
       this.subscribeToChannel()
     },
     computed: {
       ...mapGetters({
         monthlyLeadsCount: 'monthlyLeadsCount',
-        dailyLeadsCount: 'dailyLeadsCount',
         monthlySignedDocLeadsCount: 'monthlySignedDocLeadsCount',
-        dailyLeadsByAdvisers: 'dailyLeadsByAdvisers',
-        monthlyLeadsByAdvisers: 'monthlyLeadsByAdvisers'
-      })
+        monthlySignedLeadsByAdvisers: 'monthlySignedLeadsByAdvisers',
+        dailySignedLeadsByAdvisers: 'dailySignedLeadsByAdvisers'
+      }),
+      winnerBA () {
+        if (typeof this.monthlySignedLeadsByAdvisers !== 'undefined') {
+          return this.monthlySignedLeadsByAdvisers[0]
+        }
+      }
     },
     methods: {
       subscribeToChannel () {
@@ -96,19 +100,21 @@
         let channel = pusher.subscribe('phalcon')
 
         channel.bind('inquiry-created', () => {
-          this.getLeadsCount()
+          this.$store.dispatch('getMonthlyLeads')
         })
         channel.bind('inquiry-signed-doc', () => {
-          this.getSignedDocsCount()
+          this.getLeads()
         })
       },
-      getLeadsCount () {
-        this.$store.dispatch('getDailyLeads')
+
+      getLeads () {
+        this.$store.dispatch('getDailySignedDocs')
         this.$store.dispatch('getMonthlyLeads')
         this.$store.dispatch('getMonthlySignedDocLeads')
       },
-      getSignedDocsCount () {
-        this.$store.dispatch('getMonthlySignedDocLeads')
+
+      fullName (item) {
+        return item.first_name + ' ' + item.last_name
       }
     }
   }

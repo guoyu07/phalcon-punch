@@ -4,6 +4,7 @@ import api from '../../api/api'
 // initial state
 const state = {
   dailyLeads: [],
+  dailySignedDocs: [],
   monthlyLeads: [],
   monthlySignedDocLeads: []
 }
@@ -13,29 +14,34 @@ const getters = {
   monthlyLeadsCount: state => {
     return state.monthlyLeads.total_leads
   },
-  dailyLeadsCount: state => {
-    return state.dailyLeads.total_leads
-  },
   monthlySignedDocLeadsCount: state => {
     return state.monthlySignedDocLeads.total_leads
   },
-  dailyLeadsByAdvisers: state => state.dailyLeads.booking_adviser,
-  monthlyLeadsByAdvisers: state => state.monthlyLeads.booking_adviser
+  dailySignedLeadsByAdvisers: state => state.dailySignedDocs.booking_adviser,
+  monthlySignedLeadsByAdvisers: state => state.monthlySignedDocLeads.booking_adviser
 }
 
 // actions
 const actions = {
   getDailyLeads ({ commit }) {
-    api.getMonthlyLeads().then(response => {
-      commit(types.MONTHLY_LEADS, response)
+    api.getDailyLeads().then(response => {
+      commit(types.DAILY_LEADS, response)
     }).catch(error => {
       console.log(error)
     })
   },
 
+  getDailySignedDocs ({ commit }) {
+    api.getDailySignedDocs().then(response => {
+      commit(types.DAILY_SIGNED_DOCS, response)
+    }).catch(error => {
+      console.error(error)
+    })
+  },
+
   getMonthlyLeads ({ commit }) {
-    api.getDailyLeads().then(response => {
-      commit(types.DAILY_LEADS, response)
+    api.getMonthlyLeads().then(response => {
+      commit(types.MONTHLY_LEADS, response)
     }).catch(error => {
       console.log(error)
     })
@@ -57,14 +63,20 @@ const mutations = {
     state.monthlyLeads = inquiries
   },
 
+  [types.MONTHLY_SIGNED_DOC_LEADS] (state, payload) {
+    state.monthlySignedDocLeads = payload
+  },
+
   [types.DAILY_LEADS] (state, inquiries) {
     // assign the inquiries to state.dailyLeads
     state.dailyLeads = inquiries
   },
 
-  [types.MONTHLY_SIGNED_DOC_LEADS] (state, payload) {
-    state.monthlySignedDocLeads = payload
+  [types.DAILY_SIGNED_DOCS] (state, inquiries) {
+    // assign the inquiries to state.dailyLeads
+    state.dailySignedDocs = inquiries
   }
+
 }
 
 export default {
