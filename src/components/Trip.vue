@@ -52,7 +52,7 @@
                   {{ winnerBA.leads_count }}
                 </div>
               </li>
-              <li v-for="(item, index) in monthlySignedLeadsByAdvisers" v-if="item">
+              <li v-for="(item, index) in monthlyBAs" v-if="item">
                 <div class="baScore__image image-cropper">
                   <img  class=" pontosImageCircle" :src="item.image" alt="Marcos">
                 </div>
@@ -60,6 +60,7 @@
                   {{ item.leads_count }}
                 </div>
               </li>
+
             </ul>
           </div>
         </section>
@@ -86,7 +87,8 @@
         monthlyLeadsCount: 'monthlyLeadsCount',
         monthlySignedDocLeadsCount: 'monthlySignedDocLeadsCount',
         monthlySignedLeadsByAdvisers: 'monthlySignedLeadsByAdvisers',
-        dailySignedLeadsByAdvisers: 'dailySignedLeadsByAdvisers'
+        dailySignedLeadsByAdvisers: 'dailySignedLeadsByAdvisers',
+        monthlyBAs: 'monthlyBAs'
       }),
       winnerBA () {
         if (typeof this.monthlySignedLeadsByAdvisers !== 'undefined') {

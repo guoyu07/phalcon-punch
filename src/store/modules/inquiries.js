@@ -18,7 +18,16 @@ const getters = {
     return state.monthlySignedDocLeads.total_leads
   },
   dailySignedLeadsByAdvisers: state => state.dailySignedDocs.booking_adviser,
-  monthlySignedLeadsByAdvisers: state => state.monthlySignedDocLeads.booking_adviser
+  monthlySignedLeadsByAdvisers: state => state.monthlySignedDocLeads.booking_adviser,
+  
+  monthlyBAs: state => {
+    if (typeof state.monthlySignedDocLeads.booking_adviser !== 'undefined') {
+      let advisers = state.monthlySignedDocLeads.booking_adviser
+      return advisers.filter(function (value, index) {
+        return index !== 0
+      })
+    }
+  }
 }
 
 // actions
